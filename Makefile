@@ -3,7 +3,7 @@ HOST := armv6-apple-darwin8-
 CC := $(HOST)cc
 AR := $(HOST)ar
 
-CFLAGS := -std=c99 -O2
+CFLAGS := -std=c99 -Os
 
 SRCS := $(wildcard src/*.c)
 OBJS := $(SRCS:.c=.o)
