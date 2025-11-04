@@ -8,6 +8,8 @@ CFLAGS := -std=c99 -Os
 SRCS := $(wildcard src/*.c)
 OBJS := $(SRCS:.c=.o)
 
+HEADERS := $(wildcard src/*.h)
+
 ifndef VERBOSE
 V := @
 endif
@@ -16,7 +18,7 @@ libios1compat.a: $(OBJS)
 	@printf " \033[1;34mAR\033[0m libios1compat.a\n"
 	$(V)$(AR) rcs $@ $(OBJS)
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	@src=$@; src=$${src##*/}; printf " \033[1;32mCC\033[0m %s\n" "$$src"
 	$(V)$(CC) $(CFLAGS) -c $< -o $@
 
